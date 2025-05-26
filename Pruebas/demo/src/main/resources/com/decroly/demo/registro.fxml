@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.decroly.demo.HelloController">
+
+    <children>
+        <!-- Fondo con imagen -->
+        <ImageView fitHeight="1080.0" fitWidth="1922.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/seychelles-4245171_1920.jpg" />
+            </image>
+        </ImageView>
+
+        <!-- Contenedor del formulario -->
+        <VBox fx:id="registroPanel" alignment="CENTER" layoutX="665.0" layoutY="164.0" prefHeight="753.0" prefWidth="590.0" spacing="25.0" style="-fx-background-color: white;" visible="false">
+            <padding>
+                <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+            </padding>
+            <children>
+                <Button fx:id="flechaRegreso" ellipsisString="←" mnemonicParsing="false" prefHeight="30.0" prefWidth="31.0" style="-fx-background-color: Black;" text="←" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <VBox.margin>
+                        <Insets left="-450.0" top="-0.0" />
+                    </VBox.margin>
+                </Button>
+                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../assets/LOGOsinletras.png" />
+                    </image>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </ImageView>
+
+                <!-- Título centrado -->
+                <HBox alignment="CENTER">
+                    <children>
+                        <Label text="OrbiTravel">
+                            <font>
+                                <Font name="Century" size="48.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+
+                <Separator prefHeight="12.0" prefWidth="274.0" />
+
+                <!-- REGISTRO -->
+
+                <!-- Nombre -->
+                <TextField fx:id="nombreField" maxWidth="200.0" prefHeight="27.0" prefWidth="200.0" promptText="Nombre" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;">
+                    <VBox.margin>
+                        <Insets left="-250.0" />
+                    </VBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="TEXT" />
+                    </cursor></TextField>
+
+                <!-- Apellido -->
+                <TextField fx:id="apellidoField" maxWidth="200.0" prefHeight="25.0" prefWidth="180.0" promptText="Apellido" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;">
+                    <VBox.margin>
+                        <Insets left="250.0" top="-50.0" />
+                    </VBox.margin>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets></TextField>
+
+                <!-- Fecha de nacimiento -->
+                <DatePicker fx:id="fechaNacimientoField" prefHeight="27.0" prefWidth="200.0" promptText="Fecha de nacimiento">
+                    <VBox.margin>
+                        <Insets right="250.0" />
+                    </VBox.margin>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets></DatePicker>
+
+                <!-- Email -->
+                <TextField fx:id="emailField" maxWidth="200.0" prefHeight="27.0" prefWidth="200.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;">
+                    <VBox.margin>
+                        <Insets left="250.0" top="-50.0" />
+                    </VBox.margin></TextField>
+
+                <!-- Contraseña -->
+                <PasswordField fx:id="contraField" maxWidth="200.0" prefHeight="27.0" prefWidth="100.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;">
+                    <VBox.margin>
+                        <Insets left="-250.0" />
+                    </VBox.margin></PasswordField>
+                <PasswordField fx:id="repiteContraField" maxWidth="200.0" prefHeight="27.0" prefWidth="100.0" promptText="Repite la contraseña" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;">
+                    <VBox.margin>
+                        <Insets left="250.0" top="-50.0" />
+                    </VBox.margin>
+                </PasswordField>
+                <TextField fx:id="telefonoField" maxWidth="200.0" prefHeight="27.0" prefWidth="100.0" promptText="Telefono" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;">
+                    <VBox.margin>
+                        <Insets right="250.0" />
+                    </VBox.margin></TextField>
+                <Button fx:id="onRegistroButton" mnemonicParsing="false" onAction="#onRegistroButton" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: Black;" text="Registrarse" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <VBox.margin>
+                        <Insets left="250.0" top="-40.0" />
+                    </VBox.margin>
+                </Button>
+                <Label fx:id="welcomeText2" text="" textFill="RED" />
+            </children>
+        </VBox>
+
+        <VBox fx:id="iniciosesionPanel" layoutX="665.0" layoutY="164.0" prefHeight="500.0" prefWidth="590.0" spacing="25.0" style="-fx-background-color: white;">
+            <children>
+
+                <!-- Título -->
+                <Label alignment="CENTER" prefHeight="41.0" prefWidth="591.0" text="OrbiTravel" textFill="BLACK">
+                    <font>
+                        <Font name="Century" size="48.0" />
+                    </font>
+                    <VBox.margin>
+
+                        <Insets top="15.0" />
+
+                    </VBox.margin>
+                </Label>
+
+                <Separator prefHeight="0.0" prefWidth="590.0">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets></Separator>
+
+                <!-- Usuario -->
+                <HBox maxWidth="540.0" prefHeight="149.0" prefWidth="540.0" spacing="5.0">
+                    <children>
+                        <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../assets/account_circle_45dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png" />
+                            </image>
+                        </ImageView>
+                        <TextField fx:id="emailUserLogin" prefHeight="25.0" prefWidth="180.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin></TextField>
+                        <HBox maxHeight="60.0" maxWidth="300.0">
+                            <children>
+                                <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../assets/lock_50dp_1F1F1F_FILL0_wght400_GRAD0_opsz48.png" />
+                                    </image>
+                                </ImageView>
+                                <PasswordField fx:id="passwordUserLogin" prefHeight="25.0" prefWidth="180.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;">
+                                    <HBox.margin>
+                                        <Insets left="10.0" />
+                                    </HBox.margin>
+                                </PasswordField>
+                            </children>
+                            <HBox.margin>
+                                <Insets left="-222.0" top="95.0" />
+                            </HBox.margin>
+                        </HBox>
+                        <ImageView fitHeight="140.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../assets/LOGOsinletras.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets left="80.0" />
+                            </HBox.margin>
+                        </ImageView>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox maxHeight="57.0" maxWidth="250.0" prefHeight="37.0" prefWidth="250.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="134.0" text="¿No tienes Cuenta? ">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="registrarseField" text="Registrate" textFill="#3373ff">
+                            <font>
+                                <Font name="Georgia Bold Italic" size="14.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <HBox.margin>
+                                <Insets top="3.0" />
+                            </HBox.margin>
+                            <effect>
+                                <Lighting>
+                                    <bumpInput>
+                                        <Shadow />
+                                    </bumpInput>
+                                    <light>
+                                        <javafx.scene.effect.Light.Distant />
+                                    </light>
+                                </Lighting>
+                            </effect>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="175.0" top="50.0" />
+                    </VBox.margin>
+                </HBox>
+
+                <!-- Botones -->
+                <HBox alignment="CENTER" spacing="15.0">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <children>
+                        <Button fx:id="loginButton" onAction="#onLoginButtonClick" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: BLACK;" text="Iniciar" textFill="WHITE">
+
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <Label fx:id="welcomeText" text="" textFill="RED" />
+                    </children>
+                </HBox>
+
+            </children>
+        </VBox>
+
+    </children>
+</AnchorPane>

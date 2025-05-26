@@ -1,0 +1,106 @@
+DROP DATABASE IF EXISTS orbitravel; 
+CREATE DATABASE orbitravel;
+USE orbitravel;
+
+-- --- Usuario y privilegios -----------------------------------------------------------------------------
+-- CREATE USER 'developer'@'localhost' IDENTIFIED BY 'developer';
+-- GRANT ALL PRIVILEGES ON orbitravel TO 'developer'@'localhost';
+
+-- DROP USER 'developer';
+
+
+-- --- Creacion de Tablas --------------------------------------------------------------------------------
+CREATE TABLE usuarios (
+    usuario_id INT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    fecha_nacimiento DATE NOT NULL,
+    correo_electronico VARCHAR(255) NOT NULL,
+    contraseña VARCHAR(255) NOT NULL,
+    telefono VARCHAR(20)
+);
+ 
+CREATE TABLE ubicaciones (
+    ubicacion_id INT PRIMARY KEY,
+    pais VARCHAR(100) NOT NULL,
+    ciudad VARCHAR(100) NOT NULL,
+    direccion VARCHAR(255),
+    descripcion TEXT,
+    precio_base DECIMAL(4,2) NOT NULL
+);
+
+CREATE TABLE reservas (
+    reserva_id INT,
+    usuario_id INT NOT NULL,
+    ubicacion_id INT NOT NULL,
+	tipo_transporte VARCHAR(255) CHECK (Tipo_transporte IN ('Vuelos', 'Travesías Marítimas')) NOT NULL,
+    tipo_vuelo VARCHAR(255) CHECK (Tipo_vuelo IN ('Ida y Vuelta', 'Solo ida', 'Múltiples destinos')) NOT NULL,
+	clase VARCHAR(255) CHECK (Clase IN ('Turista', 'Turista premium', 'Buisness', 'Primera clase')) NOT NULL,
+    fecha_ida DATE NOT NULL,
+    fecha_vuelta DATE NOT NULL,
+	fecha_reserva TIMESTAMP,
+    numero_reservas INT NOT NULL,
+    precio DECIMAL(4,2) NOT NULL,
+    estado VARCHAR(100) NOT NULL DEFAULT 'pendiente',
+	PRIMARY KEY (reserva_id),
+	FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
+    FOREIGN KEY (ubicacion_id) REFERENCES ubicaciones(ubicacion_id)
+);
+
+
+CREATE TABLE pagos (
+    pago_id INT,
+    reserva_id INT NOT NULL,
+    moneda VARCHAR(3) CHECK (Moneda IN ('EUR', 'USD', 'GBP', 'ARS', 'MXN', 'COP', 'CLP', 'THB', 'CZK', 'DKK', 'ISK', 'NOK', 'SEK', 'BHD', 
+    'JOD', 'KWD', 'AED', 'AUD', 'CAD', 'HKD', 'FJD', 'NAD', 'NZD', 'SGD', 'HUF', 'XOF', 'CHF', 'UAH', 'GEL', 'MDL', 'RON', 'BGN', 'EGP', 
+	'TRY', 'AZN', 'TWD', 'ILS', 'MOP', 'ZAR', 'BRL', 'QAR', 'OMR', 'SAR', 'MYR', 'RUB', 'INR', 'IDR', 'KZT', 'KRW', 'JPY', 'CNY', 'PLN')) NOT NULL,
+    metodo_pago VARCHAR(100),
+	fecha_pago TIMESTAMP,
+    estado VARCHAR(100) NOT NULL DEFAULT 'pendiente',
+    PRIMARY KEY (pago_id),
+	FOREIGN KEY (reserva_id) REFERENCES reservas(reserva_id)
+);
+
+CREATE TABLE resenas (
+    reseña_id INT,
+    usuario_id INT NOT NULL,
+    ubicacion_id INT NOT NULL,
+    calificacion INT CHECK (calificacion BETWEEN 1 AND 5),
+    comentario TEXT,
+    fecha_creacion TIMESTAMP,
+    PRIMARY KEY (reseña_id),
+	FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
+    FOREIGN KEY (ubicacion_id) REFERENCES ubicaciones(ubicacion_id)
+);
+
+CREATE TABLE promociones (
+    promocion_id INT,
+    ubicacion_id INT,
+    codigo VARCHAR(50) NOT NULL,
+    descuento_porcentaje INT,
+    fecha_inicio DATE,
+    fecha_fin DATE,
+    PRIMARY KEY (promocion_id),
+    FOREIGN KEY (ubicacion_id) REFERENCES ubicaciones(ubicacion_id)
+);
+
+INSERT INTO usuarios (
+    usuario_id,
+    nombre,
+    apellido,
+    fecha_nacimiento,
+    correo_electronico,
+    contraseña,
+    telefono
+) VALUES (
+    1,
+    'Juan',
+    'Pérez',
+    '1990-05-01',
+    'juan.perez@email.com',
+    '1234', 
+    '555123456'
+);
+
+
+https://www.youtube.com/watch?v=whhSR0wlWQY&ab_channel=tookootek

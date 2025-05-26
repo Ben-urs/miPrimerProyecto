@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.decroly.demo.PaginaPrincipalController">
+    <children>
+        <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/white-airplane-in-the-sky-53630-1920x1080.jpg" />
+            </image>
+        </ImageView>
+
+        <TabPane layoutX="620.0" layoutY="380.0" prefHeight="320.0" prefWidth="680.0" style="-fx-background-color: #87e6ff;" tabClosingPolicy="UNAVAILABLE">
+            <Tab text="IDA Y VUELTA">
+                <AnchorPane prefHeight="291.0" prefWidth="930.0">
+                    <VBox alignment="TOP_CENTER" spacing="20" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                        <!-- DESDE y HASTA -->
+                        <HBox alignment="CENTER" spacing="50">
+                            <VBox alignment="CENTER">
+                                <Label style="-fx-font-size: 16px;" text="DESDE" />
+                                <ComboBox fx:id="idaVuelta_desdeCombo" prefWidth="150.0" />
+                            </VBox>
+                            <VBox alignment="CENTER">
+                                <Label style="-fx-font-size: 16px;" text="HASTA" />
+                                <ComboBox fx:id="idaVuelta_hastaCombo" prefWidth="150.0" />
+                            </VBox>
+                        </HBox>
+
+                        <Separator prefWidth="200.0" />
+
+                        <!-- FECHAS -->
+                        <HBox alignment="CENTER" spacing="50">
+                            <VBox alignment="CENTER">
+                                <Label text="FECHA SALIDA" />
+                                <DatePicker fx:id="fechaSalida" />
+                            </VBox>
+                            <VBox alignment="CENTER">
+                                <Label text="FECHA VUELTA" />
+                                <DatePicker fx:id="fechaVuelta" />
+                            </VBox>
+                        </HBox>
+
+                        <Separator prefWidth="200.0" />
+
+                        <!-- PASAJEROS Y CLASE -->
+                        <HBox alignment="CENTER" spacing="50">
+                            <VBox alignment="CENTER">
+                                <Label text="PASAJEROS" />
+                                <ComboBox fx:id="comboPasajeros">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="1 Adulto" />
+                                            <String fx:value="2 Adultos" />
+                                            <String fx:value="1 Adulto, 1 Niño" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                            </VBox>
+                            <VBox alignment="CENTER">
+                                <Label text="CLASE" />
+                                <ComboBox fx:id="comboClase">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Turista" />
+                                            <String fx:value="Ejecutiva" />
+                                            <String fx:value="Primera" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </AnchorPane>
+            </Tab>
+
+            <Tab text="MULTITRAYECTO" />
+
+
+        </TabPane>
+
+
+
+    </children>
+</AnchorPane>
